@@ -4,16 +4,16 @@ import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import java.util.Random;
 
-class Ball {
+class Ball extends GraphicEntity{
     private Component canvas;
+    private boolean isInsidePocket = false;
     private static final int XSIZE = 20;
     private static final int YSIZE = 20;
-    private int x = 0;
-    private int y = 0;
     private int dx = 2;
     private int dy = 2;
 
     public Ball(Component c) {
+        super(XSIZE,YSIZE,0,0);
         this.canvas = c;
         if (Math.random() < 0.5) {
             x = new Random().nextInt(this.canvas.getWidth());
@@ -22,12 +22,14 @@ class Ball {
             x = 0;
             y = new Random().nextInt(this.canvas.getHeight());
         }
+
     }
 
     public static void f() {
         int a = 0;
     }
 
+    @Override
     public void draw(Graphics2D g2) {
         g2.setColor(Color.darkGray);
         g2.fill(new Ellipse2D.Double(x, y, XSIZE, YSIZE));
@@ -53,5 +55,13 @@ class Ball {
             dy = -dy;
         }
         this.canvas.repaint();
+    }
+
+    public boolean isInsidePocket() {
+        return isInsidePocket;
+    }
+
+    public void setInsidePocket(boolean insidePocket) {
+        isInsidePocket = insidePocket;
     }
 }
