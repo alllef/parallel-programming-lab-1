@@ -58,6 +58,11 @@ public class BounceFrame extends JFrame {
         BallThread thread = new BallThread(b);
         thread.setPriority(Thread.MAX_PRIORITY);
         thread.start();
+        try {
+            thread.join(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         System.out.println("Thread name =" + thread.getName());
     }
 
