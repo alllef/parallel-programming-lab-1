@@ -14,6 +14,7 @@ public class BallThread extends Thread {
                 b.move();
                 System.out.println("Thread name = "
                         + Thread.currentThread().getName());
+                System.out.println("Priority is "+Thread.currentThread().getPriority());
                 Thread.sleep(5);
                 if (b.isInsidePocket())
                     break;

@@ -25,12 +25,12 @@ public class BallCanvas extends JPanel {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         for (Ball b : balls) {
-            if (b.isInside(pocket)) {
+            /*if (b.isInside(pocket)) {
                 balls.remove(b);
                 b.setInsidePocket(true);
                 jLabel.setText("Number of balls in pocket = " + ++ballsInPocket);
             }
-            else
+            else*/
                 b.draw(g2);
 
             pocket.draw(g2);

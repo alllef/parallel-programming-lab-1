@@ -4,16 +4,17 @@ import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import java.util.Random;
 
-class Ball extends GraphicEntity{
+class Ball extends GraphicEntity {
     private Component canvas;
     private boolean isInsidePocket = false;
     private static final int XSIZE = 20;
     private static final int YSIZE = 20;
     private int dx = 2;
     private int dy = 2;
+    private Color color = Color.DARK_GRAY;
 
     public Ball(Component c) {
-        super(XSIZE,YSIZE,0,0);
+        super(XSIZE, YSIZE, 0, 0);
         this.canvas = c;
         if (Math.random() < 0.5) {
             x = new Random().nextInt(this.canvas.getWidth());
@@ -22,7 +23,12 @@ class Ball extends GraphicEntity{
             x = 0;
             y = new Random().nextInt(this.canvas.getHeight());
         }
+    }
 
+    public Ball(Component c, int x, int y, Color color) {
+        super(XSIZE, YSIZE, x, y);
+        this.canvas = c;
+        this.color = color;
     }
 
     public static void f() {
@@ -31,7 +37,7 @@ class Ball extends GraphicEntity{
 
     @Override
     public void draw(Graphics2D g2) {
-        g2.setColor(Color.darkGray);
+        g2.setColor(color);
         g2.fill(new Ellipse2D.Double(x, y, XSIZE, YSIZE));
     }
 
