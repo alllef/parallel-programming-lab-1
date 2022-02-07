@@ -1,5 +1,7 @@
 package com.github.alllef;
 
+import com.github.alllef.counter.MethodSyncCounter;
+
 import javax.swing.*;
 
 public class Bounce {
@@ -8,8 +10,11 @@ public class Bounce {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         System.out.println("Thread name = " + Thread.currentThread().getName());
+        MethodSyncCounter counter = new MethodSyncCounter();
 
-        SymbolPrint symbolPrint = new SymbolPrint();
+
+
+        /*SymbolPrint symbolPrint = new SymbolPrint();
         Thread dashThread = new Thread(() -> {
             for (int i = 0; i < 100; i++)
                 symbolPrint.printDash();
@@ -21,6 +26,7 @@ public class Bounce {
         });
 
         dashThread.start();
-        delimiterThread.start();
+        delimiterThread.start();*/
+
     }
 }
