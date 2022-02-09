@@ -12,21 +12,22 @@ public class Bounce {
         System.out.println("Thread name = " + Thread.currentThread().getName());
         MethodSyncCounter counter = new MethodSyncCounter();
 
-
-
-        /*SymbolPrint symbolPrint = new SymbolPrint();
+        SymbolPrint symbolPrint = new SymbolPrint();
         Thread dashThread = new Thread(() -> {
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 10000; i++) {
                 symbolPrint.printDash();
+                if (i % 100 == 0)
+                    System.out.println();
+            }
         });
 
         Thread delimiterThread = new Thread(() -> {
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 10000; i++)
                 symbolPrint.printDelimiter();
         });
 
         dashThread.start();
-        delimiterThread.start();*/
+        delimiterThread.start();
 
     }
 }

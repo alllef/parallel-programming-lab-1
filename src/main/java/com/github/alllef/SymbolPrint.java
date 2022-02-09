@@ -12,7 +12,7 @@ public class SymbolPrint {
             }
         }
 
-        System.out.println("-");
+        System.out.print("-");
         isDashPrinted = true;
         notifyAll();
     }
@@ -25,7 +25,7 @@ public class SymbolPrint {
                 e.printStackTrace();
             }
         }
-        System.out.println("|");
+        System.out.print("|");
         isDashPrinted = false;
         notifyAll();
     }

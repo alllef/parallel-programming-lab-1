@@ -10,7 +10,6 @@ public class BallCanvas extends JPanel {
     int ballsInPocket = 0;
     JLabel jLabel = new JLabel("Number of balls in pocket = " + ballsInPocket);
 
-
     BallCanvas() {
         super();
         this.add(jLabel);
@@ -24,13 +23,13 @@ public class BallCanvas extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        for (Ball b : balls) {
-            /*if (b.isInside(pocket)) {
+        for (int i = 0; i < balls.size(); i++) {
+            Ball b = balls.get(i);
+            if (b.isInside(pocket) && b.getColor().equals(Color.DARK_GRAY)) {
                 balls.remove(b);
                 b.setInsidePocket(true);
                 jLabel.setText("Number of balls in pocket = " + ++ballsInPocket);
-            }
-            else*/
+            } else
                 b.draw(g2);
 
             pocket.draw(g2);

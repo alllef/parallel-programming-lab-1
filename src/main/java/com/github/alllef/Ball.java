@@ -70,4 +70,8 @@ class Ball extends GraphicEntity {
     public void setInsidePocket(boolean insidePocket) {
         isInsidePocket = insidePocket;
     }
+
+    public Color getColor() {
+        return color;
+    }
 }

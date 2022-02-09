@@ -27,6 +27,7 @@ public class BounceFrame extends JFrame {
         JButton buttonStop = new JButton("Stop");
         JButton redBallButton = new JButton("Start red ball");
         JButton blueBallButton = new JButton("Start blue ball");
+        JButton greenBallButton = new JButton("Start green ball");
         JButton allBallButton = new JButton("Start all balls");
 
         buttonStart.addActionListener(e -> {
@@ -39,6 +40,8 @@ public class BounceFrame extends JFrame {
 
         redBallButton.addActionListener(e -> startRedBall());
         blueBallButton.addActionListener(e -> startBlueBall());
+        greenBallButton.addActionListener(e -> startGreenBall());
+
         allBallButton.addActionListener(e -> {
             for (int i = 0; i < 2; i++)
                 startBlueBall();
@@ -46,10 +49,23 @@ public class BounceFrame extends JFrame {
         });
 
         buttonStop.addActionListener(e -> System.exit(0));
-        List.of(buttonStart, buttonStop, redBallButton, blueBallButton, allBallButton)
+        List.of(buttonStart, buttonStop, redBallButton, blueBallButton, allBallButton, greenBallButton)
                 .forEach(buttonPanel::add);
 
         content.add(buttonPanel, BorderLayout.SOUTH);
+    }
+
+    private void startGreenBall() {
+        Ball b = new Ball(canvas, 200, 200, Color.GREEN);
+        canvas.add(b);
+        BallThread thread = new BallThread(b);
+        thread.start();
+        System.out.println("Thread name =" + thread.getName());
+        try {
+            thread.join(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     private void startRedBall() {
@@ -58,11 +74,6 @@ public class BounceFrame extends JFrame {
         BallThread thread = new BallThread(b);
         thread.setPriority(Thread.MAX_PRIORITY);
         thread.start();
-        try {
-            thread.join(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         System.out.println("Thread name =" + thread.getName());
     }
 
